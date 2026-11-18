@@ -448,6 +448,145 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .ftr__nav{grid-template-columns:repeat(3,1fr);column-gap:24px}
 }
 
+/* <picture> transparents pour la mise en page */
+.hero__media picture,.dmask picture,.dehors__media picture{display:block;width:100%;height:100%}
+/* éléments réservés à l'ordinateur */
+.hdr__nav,.hdr__cta,.hero__meta{display:none}
+
+/* ==========================================================
+   ORDINATEUR ≥ 1024px — la version mobile n'est pas touchée
+   ========================================================== */
+@media (min-width:1024px){
+  :root{--pad:clamp(48px,4.4vw,80px)}
+  .wrap{max-width:1320px}
+  .sec{padding-top:clamp(120px,11vw,180px);padding-bottom:clamp(120px,11vw,180px)}
+  .lead{font-size:clamp(20px,1.45vw,24px)}
+
+  /* Header : navigation en ligne */
+  .hdr{padding:20px var(--pad);gap:32px}
+  .hdr.is-solid{padding-top:12px;padding-bottom:12px}
+  .hdr__logo{width:118px;height:56px;flex:none}
+  .hdr__menu,.hdr .hdr__status{display:none}
+  .hdr__nav{display:flex;gap:clamp(20px,2.4vw,40px);margin:0 auto}
+  .hdr__nav a{position:relative;font-family:var(--f-mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 0}
+  .hdr__nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+  .hdr__nav a:hover::after{transform:scaleX(1);transform-origin:left}
+  .hdr__cta{display:inline-flex;min-height:44px;padding:0 16px 0 18px;font-size:13px}
+
+  /* Hero : affiche en deux panneaux */
+  .hero{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);min-height:100vh;align-items:stretch}
+  .hero__media{position:relative;inset:auto;grid-column:2;grid-row:1;overflow:hidden}
+  .hero__media picture{position:absolute;inset:0}
+  .hero__media img{object-position:50% 42%}
+  .hero__body > .status{align-self:flex-start}
+  .hero__media::after{background:linear-gradient(90deg,rgba(21,20,19,.45) 0%,rgba(21,20,19,0) 22%),linear-gradient(180deg,rgba(21,20,19,.45) 0%,rgba(21,20,19,0) 20%)}
+  .hero__body{grid-column:1;grid-row:1;max-width:none;width:auto;margin:0;padding:150px var(--pad) 56px;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
+  .hero__body::before{ /* trame d'impression sur le panneau encre */
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:radial-gradient(rgba(232,78,28,.10) .9px,transparent 1.3px);background-size:6px 6px;
+  }
+  .hero__title{font-size:clamp(54px,5.7vw,112px);margin:18px 0 26px}
+  .hero__ctas .btn{min-width:220px}
+  .hero__meta{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:56px 0 0;padding-top:22px;border-top:1.5px solid rgba(244,236,217,.22)}
+  .hero__meta dt{color:var(--o);margin-bottom:8px}
+  .hero__meta dd{margin:0;font-size:15px;line-height:1.4;color:rgba(244,236,217,.86)}
+
+  /* 01 · Le soir */
+  .s-principe .wrap{display:grid;grid-template-columns:1.15fr 1fr;column-gap:clamp(48px,6vw,110px);align-items:start}
+  .s-principe .sec__head{grid-column:1/-1}
+  .s-principe .display{grid-column:1/-1;font-size:clamp(76px,7.6vw,150px)}
+  .s-principe .lead{grid-column:1;max-width:30ch;margin-top:44px}
+  .tickets{grid-column:2;grid-row:3;grid-template-columns:1fr;gap:16px;margin-top:44px}
+  .ticket h3{font-size:34px}
+  .ticket{padding:30px 32px 28px}
+
+  /* 02 · Le comptoir */
+  .s-comptoir .wrap{display:grid;grid-template-columns:1fr 1.1fr;column-gap:clamp(56px,7vw,120px);
+    grid-template-areas:"head head" "title media" "lead media" "facts media";grid-template-rows:auto auto auto 1fr}
+  .s-comptoir .sec__head{grid-area:head}
+  .s-comptoir .display{grid-area:title;font-size:clamp(64px,6.2vw,118px)}
+  .s-comptoir .lead{grid-area:lead}
+  .s-comptoir .facts{grid-area:facts;align-self:end;margin-top:48px}
+  .comptoir-grid{grid-area:media;display:block;position:relative;margin:0 0 0 auto;width:100%}
+  .comptoir-grid .dmask:first-child{aspect-ratio:4/5}
+  .comptoir-grid .dmask:last-child{position:absolute;width:42%;left:-12%;bottom:-7%;margin:0;aspect-ratio:1/1;border-width:10px}
+
+  /* 03 · Les vins */
+  .s-vins{padding-right:var(--pad)}
+  .s-vins .sec__head,.s-vins .vins__intro{padding-right:0}
+  .s-vins > *{max-width:1320px;margin-left:auto;margin-right:auto}
+  .vins__intro{display:grid;grid-template-columns:1.25fr 1fr;column-gap:clamp(48px,6vw,110px);align-items:end}
+  .vins__intro .display{grid-column:1/-1}
+  .vins__intro .lead{grid-column:2;margin-top:36px !important}
+  .s-vins .display{font-size:clamp(76px,7.6vw,150px)}
+  .vins__intro .lead{margin:0 0 12px}
+  .rail{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;overflow:visible;padding:0;margin-top:72px}
+  .rail figure{flex:none}
+  .rail-hint{display:none}
+  .vins__note{margin:48px auto 0;max-width:1320px;padding:24px 28px}
+
+  /* 04 · La cuisine */
+  .s-cuisine .wrap{display:grid;grid-template-columns:1.2fr 1fr;column-gap:clamp(48px,6vw,110px);align-items:end}
+  .s-cuisine .sec__head{grid-column:1/-1}
+  .s-cuisine .display{grid-column:1;font-size:clamp(70px,6.8vw,132px)}
+  .s-cuisine .lead{grid-column:2;grid-row:2;margin:0 0 12px}
+  .plates{grid-column:1/-1;grid-template-columns:1.35fr 1fr 1fr;gap:20px;margin-top:72px;align-items:stretch}
+  .plates .p-big{grid-row:auto;aspect-ratio:auto;position:relative}
+  .plates .p-big .dmask{position:absolute;inset:0}
+  .press{grid-column:1/-1;grid-template-columns:1fr 1fr;gap:16px;margin-top:48px}
+
+  /* 05 · Le midi : l'affiche en deux colonnes */
+  .poster{max-width:1240px;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(56px,7vw,120px);align-items:center}
+  .poster__kicker{grid-column:1;justify-content:flex-start;margin-bottom:26px}
+  .poster__title{grid-column:1;text-align:left;font-size:clamp(56px,5.2vw,100px)}
+  .hours{grid-column:2;grid-row:1/span 4;margin:0;padding:44px 0 44px 48px;border-left:1.5px solid rgba(21,20,19,.9);grid-template-columns:auto 1fr;gap:36px}
+  .hours__t{font-size:26px}
+  .hours dt,.hours dd{font-size:clamp(26px,2.4vw,38px)}
+  .midi__cta{grid-column:1;grid-template-columns:1fr;max-width:480px;margin-top:44px}
+  .midi__note{grid-column:1;text-align:left}
+
+  /* 06 · Hors les murs */
+  .s-dehors .in-pad{max-width:calc(1320px + var(--pad)*2);margin:0 auto}
+  .s-dehors .display{font-size:clamp(76px,7.6vw,150px)}
+  .dehors__media{aspect-ratio:auto;height:min(82vh,820px);margin-top:64px}
+  .dehors__card{max-width:540px;margin:-220px 0 0 max(var(--pad), calc((100vw - 1320px)/2));padding:34px 34px 30px}
+  .dehors__card h3{font-size:38px}
+  .recrute{max-width:1320px;margin:80px auto 0;padding:32px 0}
+  .s-dehors .recrute{margin-left:max(var(--pad), calc((100vw - 1320px)/2));margin-right:max(var(--pad), calc((100vw - 1320px)/2))}
+  .recrute b{font-size:34px}
+
+  /* 07 · Venir */
+  .kcard{grid-template-columns:1fr 1fr;gap:clamp(56px,7vw,120px);align-items:start}
+  .kcard__addr{position:sticky;top:120px}
+  .kcard__addr .display{font-size:clamp(64px,6.4vw,118px)}
+  .infos__row{grid-template-columns:130px 1fr;padding:22px 0 20px}
+  .infos__cta{grid-template-columns:1.4fr 1fr 1fr}
+  .infos__cta .btn--full{grid-column:auto}
+
+  /* Footer */
+  .ftr{display:grid;grid-template-columns:1.1fr 1fr;column-gap:clamp(56px,7vw,120px);padding:110px max(var(--pad), calc((100vw - 1320px)/2)) 48px;align-items:start}
+  .ftr__kicker,.ftr__big,.ftr__status{grid-column:1}
+  .ftr__status{justify-self:start;margin-bottom:0}
+  .ftr__big{font-size:clamp(72px,7vw,136px)}
+  .ftr__nav{grid-column:2;grid-row:1/span 3;align-self:end;grid-template-columns:1fr;margin:0}
+  .ftr__nav b{font-size:clamp(26px,2.3vw,36px)}
+  .ftr__base{grid-column:1/-1;margin-top:96px}
+  .ftr__logo{width:150px}
+  .ftr__alcool{grid-column:1/-1}
+}
+
+/* survols : seulement à la souris */
+@media (hover:hover) and (min-width:1024px){
+  .btn:hover{transform:translateY(-2px)}
+  .js .dmask.in:hover img{transform:scale(1.04)}
+  .ticket{transition:transform .5s var(--ease)}
+  .ticket:hover{transform:translateY(-4px)}
+  .press__item{transition:background .3s}
+  .press__item:hover{background:#fff8ea}
+  .recrute:hover .arrow{transform:rotate(90deg)}
+  .recrute .arrow{transition:transform .45s var(--ease)}
+}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
   .split .w > span,[data-reveal]{transform:none;opacity:1}
