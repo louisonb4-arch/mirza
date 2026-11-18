@@ -104,7 +104,8 @@
     hdr.classList.toggle('is-solid', y > heroH - 80);
     hdr.classList.toggle('is-hidden', y > heroH && y > lastY + 4 && !document.body.classList.contains('menu-open'));
     if (y < lastY - 4) hdr.classList.remove('is-hidden');
-    dock && dock.classList.toggle('is-on', y > heroH * 0.6 && y < document.body.scrollHeight - innerHeight - 140);
+    const ftr = document.querySelector('.ftr');
+    dock && dock.classList.toggle('is-on', y > heroH * 0.6 && (!ftr || y + innerHeight < ftr.offsetTop + 60));
     lastY = y;
   }
 
