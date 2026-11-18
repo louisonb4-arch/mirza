@@ -575,6 +575,14 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .ftr__alcool{grid-column:1/-1}
 }
 
+/* écrans d'ordinateur peu hauts (13" ) : le hero tient dans l'écran */
+@media (min-width:1024px) and (max-height:820px){
+  .hero__body{padding-top:110px;padding-bottom:36px}
+  .hero__title{font-size:clamp(50px,4.9vw,96px);margin:14px 0 20px}
+  .hero__ctas .btn{min-height:50px}
+  .hero__meta{margin-top:32px;padding-top:16px}
+}
+
 /* survols : seulement à la souris */
 @media (hover:hover) and (min-width:1024px){
   .btn:hover{transform:translateY(-2px)}
