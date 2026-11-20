@@ -28,7 +28,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Jost:wght@400;500;600&family=League+Spartan:wght@700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=03aac5c6">
+<link rel="stylesheet" href="css/style.css?v=82cb9e3f">
 <script>document.documentElement.classList.add('js')</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BarOrPub","name":"Le Mirza","servesCuisine":"Cuisine de comptoir","priceRange":"€€",
@@ -100,14 +100,16 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="accueil">
+  <div class="hero__grain" aria-hidden="true"></div>
   <div class="hero__media"><picture><source media="(min-width:760px)" srcset="img/d/equipe.jpg"><img src="img/equipe.jpg" alt="L'équipe du Mirza devant la porte du bar, rue Châteaubriand, le soir" width="760" height="1351" fetchpriority="high"></picture></div>
   <div class="hero__body">
     <p class="label hero__kicker"><span class="dia dia--o"></span>5 rue Châteaubriand · Nantes</p>
-    <h1 class="display hero__title split" data-split><span class="nw">Bar à vins</span> <span class="nw"><em>&amp;</em> cuisine de</span> <span class="nw">comptoir</span></h1>
+    <h1 class="display hero__title split" data-split><span class="nw">Bar à vins</span> <span class="nw"><em>&amp;</em> cuisine<span class="m-only"> de</span></span> <span class="nw"><span class="d-only">de </span>comptoir</span></h1>
+    <p class="hero__lead">Des vins nature au verre, des assiettes à partager, un zinc et une bande d'amis derrière.</p>
     <span class="status fade-late" data-status><span class="dot"></span><span data-status-text>—</span></span>
     <div class="hero__ctas fade-late d2">
-      <a class="btn btn--o" href="#infos">Ce soir <span class="dia"></span></a>
-      <a class="btn btn--c" href="#midi">Le midi <span class="dia"></span></a>
+      <a class="btn btn--o" href="#infos"><span><span class="d-only">Venir </span>Ce soir</span> <span class="dia"></span></a>
+      <a class="btn btn--c" href="#midi"><span><span class="d-only">Réserver </span>Le midi</span> <span class="dia"></span></a>
     </div>
     <dl class="hero__meta fade-late d2">
       <div><dt class="label">Le soir</dt><dd>Sans réservation, jusqu'à minuit</dd></div>
@@ -115,6 +117,8 @@
       <div><dt class="label">Où</dt><dd>5 rue Châteaubriand, Talensac</dd></div>
     </dl>
   </div>
+  <div class="hero__stamp" aria-hidden="true"><span>Sans<br>résa<br>le soir<small>Premier arrivé</small></span></div>
+  <div class="hero__band"><p class="label">Ouvert le midi du lundi au vendredi</p><b>Lun → Ven <span>10h &gt; 00h</span></b><b>Sam &amp; Dim <span>17h &gt; 00h</span></b><p class="label">5 rue Châteaubriand · Nantes</p></div>
 </section>
 
 <!-- ============ 01 · LE SOIR ============ -->
@@ -273,6 +277,6 @@
   <a href="tel:+33649508308"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.5 3.5h3l1.5 4-2 1.5a11 11 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2A16.5 16.5 0 0 1 4.5 5.5a2 2 0 0 1 2-2z"/></svg>Appeler</a>
 </nav>
 
-<script src="js/main.js?v=03aac5c6" defer></script>
+<script src="js/main.js?v=82cb9e3f" defer></script>
 </body>
 </html>

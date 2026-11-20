@@ -451,7 +451,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 /* <picture> transparents pour la mise en page */
 .hero__media picture,.dmask picture,.dehors__media picture{display:block;width:100%;height:100%}
 /* éléments réservés à l'ordinateur */
-.hdr__nav,.hdr__cta,.hero__meta{display:none}
+.hdr__nav,.hdr__cta,.hero__meta,.hero__grain,.hero__lead,.hero__stamp,.hero__band,.d-only{display:none}
 
 /* ==========================================================
    ORDINATEUR ≥ 1024px — la version mobile n'est pas touchée
@@ -473,23 +473,33 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .hdr__nav a:hover::after{transform:scaleX(1);transform-origin:left}
   .hdr__cta{display:inline-flex;min-height:44px;padding:0 16px 0 18px;font-size:13px}
 
-  /* Hero : affiche en deux panneaux */
-  .hero{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);min-height:100vh;align-items:stretch}
-  .hero__media{position:relative;inset:auto;grid-column:2;grid-row:1;overflow:hidden}
-  .hero__media picture{position:absolute;inset:0}
-  .hero__media img{object-position:50% 42%}
-  .hero__body > .status{align-self:flex-start}
-  .hero__media::after{background:linear-gradient(90deg,rgba(21,20,19,.45) 0%,rgba(21,20,19,0) 22%),linear-gradient(180deg,rgba(21,20,19,.45) 0%,rgba(21,20,19,0) 20%)}
-  .hero__body{grid-column:1;grid-row:1;max-width:none;width:auto;margin:0;padding:150px var(--pad) 56px;display:flex;flex-direction:column;justify-content:flex-end;position:relative}
-  .hero__body::before{ /* trame d'impression sur le panneau encre */
-    content:"";position:absolute;inset:0;pointer-events:none;
-    background-image:radial-gradient(rgba(232,78,28,.10) .9px,transparent 1.3px);background-size:6px 6px;
-  }
-  .hero__title{font-size:clamp(54px,5.7vw,112px);margin:18px 0 26px}
-  .hero__ctas .btn{min-width:220px}
-  .hero__meta{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:56px 0 0;padding-top:22px;border-top:1.5px solid rgba(244,236,217,.22)}
-  .hero__meta dt{color:var(--o);margin-bottom:8px}
-  .hero__meta dd{margin:0;font-size:15px;line-height:1.4;color:rgba(244,236,217,.86)}
+  /* Hero : l'affiche orange (version A validée) */
+  .hdr:not(.is-solid){color:var(--ink)}
+  .hdr:not(.is-solid) .hdr__cta{--bg:var(--ink);--fg:var(--c)}
+  .hero{display:block;min-height:max(100vh,680px);background:var(--o);color:var(--ink)}
+  .hero__grain{display:block;position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.24;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .18  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+  .hero__media{position:absolute;inset:auto;right:-6.25vw;top:calc(50% - 33px - 20.15vw);width:55.6vw;height:40.3vw;z-index:3;overflow:visible}
+  .hero__media::before{content:"";position:absolute;inset:0;z-index:0;background:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .hero__media::after{content:"";position:absolute;inset:3.2% 3.6%;z-index:1;background:radial-gradient(rgba(232,78,28,.22) .9px,transparent 1.3px) 0 0/5px 5px,var(--c);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .hero__media picture{position:absolute;inset:5.6% 6.4%;width:auto;height:auto;z-index:2;overflow:hidden;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+  .hero__media img,.ready .hero__media img{position:absolute;width:104%;height:auto;max-width:none;left:-4.9%;top:-65.5%;object-fit:fill;transform:none}
+  .hero__body{position:absolute;left:var(--pad);top:0;bottom:66px;width:min(52vw,760px);max-width:none;margin:0;padding:90px 0 0;display:flex;flex-direction:column;justify-content:center;z-index:5}
+  .js .hero__kicker,.ready .hero__kicker{color:var(--ink);opacity:1}
+  .hero__kicker .dia--o{color:var(--ink)}
+  .hero__title{font-size:clamp(60px,7.08vw,128px);color:var(--c);margin:22px 0 0}
+  .hero__title em{color:var(--ink)}
+  .hero .m-only{display:none} .hero .d-only{display:inline}
+  .hero__lead{display:block;font-size:20px;line-height:1.42;max-width:30ch;margin:28px 0 34px}
+  .hero__body > .status,.hero__meta{display:none}
+  .hero__ctas .btn--o{--bg:var(--ink);--fg:var(--c)}
+  .hero__ctas .btn{min-width:200px}
+  .hero__stamp{display:grid;place-items:center;position:absolute;z-index:6;right:44.4vw;top:calc(50% - 33px + 10.55vw);width:150px;height:150px;border-radius:50%;background:var(--c);color:var(--ink);text-align:center;transform:rotate(-12deg)}
+  .hero__stamp span{font-family:var(--f-display);font-weight:800;font-size:19px;line-height:.92;text-transform:uppercase}
+  .hero__stamp small{display:block;font-family:var(--f-mono);font-weight:400;font-size:10.5px;letter-spacing:.1em;margin-top:7px}
+  .hero__band{display:flex;position:absolute;left:0;right:0;bottom:0;height:66px;z-index:6;background:var(--ink);color:var(--c);align-items:center;justify-content:space-between;padding:0 var(--pad)}
+  .hero__band .label{color:rgba(244,236,217,.7);margin:0}
+  .hero__band b{font-family:var(--f-display);font-weight:800;font-size:19px;text-transform:uppercase;letter-spacing:.02em}
+  .hero__band b span{color:var(--o)}
 
   /* 01 · Le soir */
   .s-principe .wrap{display:grid;grid-template-columns:1.15fr 1fr;column-gap:clamp(48px,6vw,110px);align-items:start}
@@ -577,10 +587,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 /* écrans d'ordinateur peu hauts (13" ) : le hero tient dans l'écran */
 @media (min-width:1024px) and (max-height:820px){
-  .hero__body{padding-top:110px;padding-bottom:36px}
-  .hero__title{font-size:clamp(50px,4.9vw,96px);margin:14px 0 20px}
-  .hero__ctas .btn{min-height:50px}
-  .hero__meta{margin-top:32px;padding-top:16px}
+  .hero__body{padding-top:84px}
+  .hero__title{font-size:clamp(56px,6.2vw,110px);margin-top:16px}
+  .hero__lead{margin:20px 0 26px}
 }
 
 /* survols : seulement à la souris */
